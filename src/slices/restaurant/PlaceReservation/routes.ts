@@ -9,6 +9,59 @@ import {
 
 export const api = (): WebApiSetup => (router: Router): void => {
 
+    /**
+     * @openapi
+     * /api/placereservation:
+     *   post:
+     *     summary: Place a reservation
+     *     description: >
+     *       Places a reservation for a guest. The confirmationCode is generated
+     *       server-side and returned in the response — it is not supplied by the
+     *       caller. Rejected when the same guest already has a reservation for
+     *       the same start and end.
+     *     tags: [Reservations]
+     *     requestBody:
+     *       required: true
+     *       content:
+     *         application/json:
+     *           schema:
+     *             type: object
+     *             required: [email, start, end, numberOfPeople]
+     *             properties:
+     *               email:
+     *                 type: string
+     *                 example: ida@example.com
+     *               start:
+     *                 type: string
+     *                 example: 14.03.2026 18:00
+     *               end:
+     *                 type: string
+     *                 example: 14.03.2026 20:00
+     *               numberOfPeople:
+     *                 type: number
+     *                 example: 4
+     *     responses:
+     *       201:
+     *         description: Reservation placed
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: object
+     *               properties:
+     *                 ok:
+     *                   type: boolean
+     *                 confirmationCode:
+     *                   type: string
+     *                   example: C0NF1RM-0042
+     *                 next_expected_stream_version:
+     *                   type: string
+     *                 last_event_global_position:
+     *                   type: string
+     *       409:
+     *         description: No duplicates allowed
+     *       500:
+     *         description: Server error
+     */
     router.post('/api/placereservation', async (req: Request, res: Response) => {
         // confirmationCode is generated here, not supplied by the caller —
         // slice.json marks it generated / idAttribute on ReservationPlaced.
