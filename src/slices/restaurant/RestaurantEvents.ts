@@ -20,4 +20,12 @@ export type ReservationPlaced = Event<'ReservationPlaced', {
     numberOfPeople: number;
 }, CommonMeta>;
 
-export type RestaurantEvents = ReservationPlaced;
+/**
+ * Fields from .build-kit/.slices/restaurant/cancelreservation/slice.json —
+ * ReservationCancelled carries only the confirmationCode.
+ */
+export type ReservationCancelled = Event<'ReservationCancelled', {
+    confirmationCode: string;
+}, CommonMeta>;
+
+export type RestaurantEvents = ReservationPlaced | ReservationCancelled;
