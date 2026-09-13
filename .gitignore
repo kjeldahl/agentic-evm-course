@@ -1,5 +1,9 @@
 .eventmodelers/
 .claude/settings.local.json
 .claude/skills
+.mcp.json
 .mcp.json.bak
 .trogonai
+node_modules
+dist
+.env
