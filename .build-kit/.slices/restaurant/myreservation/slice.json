@@ -1,0 +1,208 @@
+{
+  "id": "345b213b-1778-4393-ae22-d95b746dc958",
+  "title": "My Reservation",
+  "status": "Created",
+  "sliceType": "STATE_VIEW",
+  "chapter": "Table Reservations (backup - full workflow)",
+  "context": "Restaurant",
+  "commands": [],
+  "events": [],
+  "readmodels": [
+    {
+      "id": "9becabea-5222-41bc-aa14-8d6c4a27649c",
+      "title": "My Reservation",
+      "type": "READMODEL",
+      "fields": [
+        {
+          "name": "reservationId",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": true,
+          "type": "UUID",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Reservation Made.reservationId"
+        },
+        {
+          "name": "guestName",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Reservation Made.guestName"
+        },
+        {
+          "name": "reservationDate",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Reservation Made.reservationDate"
+        },
+        {
+          "name": "timeSlot",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Reservation Made.timeSlot"
+        },
+        {
+          "name": "partySize",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Reservation Made.partySize"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+          "type": "INBOUND",
+          "title": "Reservation Made",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "47f71152-16fc-4991-aa83-b180303473a8",
+          "type": "OUTBOUND",
+          "title": "My Reservation",
+          "elementType": "HTML_SCREEN"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "My Reservation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "screens": [],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "04163b30-2244-405f-8cd0-0e8e8b12fedf",
+      "title": "The guest sees their reservation after booking",
+      "chapter": "Table Reservations (backup - full workflow)",
+      "sliceName": "My Reservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+          "title": "Reservation Made",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            },
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [],
+      "then": [
+        {
+          "id": "9becabea-5222-41bc-aa14-8d6c4a27649c",
+          "title": "My Reservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            },
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": []
+}

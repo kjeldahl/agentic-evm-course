@@ -1,0 +1,267 @@
+{
+  "id": "cb92af44-ebf6-4ce7-aec5-b8fd21255527",
+  "title": "View registered vacations",
+  "status": "Created",
+  "sliceType": "STATE_VIEW",
+  "chapter": "Vacation Planning",
+  "context": "Restaurant",
+  "commands": [],
+  "events": [],
+  "readmodels": [
+    {
+      "id": "2ecb2116-0d4f-401c-a6e7-32b00179492f",
+      "title": "Vacations",
+      "type": "READMODEL",
+      "fields": [
+        {
+          "name": "name",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "first_day",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "last_day",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "notes",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "vacationId",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": true,
+          "type": "UUID",
+          "cardinality": "Single",
+          "subfields": []
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "d70ee3e4-8c7c-4b99-9867-5993549d501d",
+          "type": "OUTBOUND",
+          "title": "screen",
+          "elementType": "SCREEN"
+        },
+        {
+          "id": "7d465ac3-84b5-4421-9b06-8c2eb826c958",
+          "type": "INBOUND",
+          "title": "Vacation Registered",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "8a3a9f1e-9180-4038-92e5-3ff1b0ed4c05",
+          "type": "OUTBOUND",
+          "title": "screen",
+          "elementType": "SCREEN"
+        },
+        {
+          "id": "01b92e0d-a0fc-4ea9-ba3c-2b06224d8e5b",
+          "type": "OUTBOUND",
+          "title": "Vacations",
+          "elementType": "SCREEN"
+        },
+        {
+          "id": "cb029f6a-de17-4ed8-9dc4-c8bce5e52435",
+          "type": "INBOUND",
+          "title": "Vacation Cancelled",
+          "elementType": "EVENT"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "View registered vacations",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": true,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "screens": [
+    {
+      "id": "d70ee3e4-8c7c-4b99-9867-5993549d501d",
+      "title": "screen",
+      "type": "SCREEN",
+      "fields": [],
+      "dependencies": [
+        {
+          "id": "2ecb2116-0d4f-401c-a6e7-32b00179492f",
+          "type": "INBOUND",
+          "title": "Vacations",
+          "elementType": "READMODEL"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Actor",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "View registered vacations",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": true,
+      "comments": []
+    }
+  ],
+  "processors": [],
+  "tables": [],
+  "specifications": [],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": [],
+  "storylines": [
+    {
+      "id": "e39be89a-aef7-4cb2-9052-e9ee20f52921",
+      "title": "Adding a vacation shows it",
+      "elements": [
+        {
+          "id": "2ecb2116-0d4f-401c-a6e7-32b00179492f",
+          "title": "Vacations",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "first_day"
+            },
+            {
+              "name": "last_day"
+            },
+            {
+              "name": "notes"
+            },
+            {
+              "name": "vacationId"
+            }
+          ],
+          "expectEmptyList": true
+        },
+        {
+          "id": "7d465ac3-84b5-4421-9b06-8c2eb826c958",
+          "title": "Vacation Registered",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Winter"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "08.02.2026"
+            },
+            {
+              "name": "notes",
+              "example": "Off to the Alpines"
+            },
+            {
+              "name": "vacationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "2ecb2116-0d4f-401c-a6e7-32b00179492f",
+          "title": "Vacations",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Winter"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "08.02.2026"
+            },
+            {
+              "name": "notes",
+              "example": "Off to the Alpines"
+            },
+            {
+              "name": "vacationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    }
+  ]
+}

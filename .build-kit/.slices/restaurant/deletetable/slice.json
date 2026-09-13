@@ -1,0 +1,402 @@
+{
+  "id": "306e1241-5fa0-4328-8c26-9e498567f13a",
+  "title": "Delete Table",
+  "status": "Created",
+  "sliceType": "STATE_CHANGE",
+  "chapter": "Managing Tables",
+  "context": "Restaurant",
+  "commands": [
+    {
+      "id": "a1d2cc55-7715-4329-a50b-9a14d6dd53cc",
+      "title": "Delete Table",
+      "type": "COMMAND",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": true,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "cc9a9254-33b5-4d3b-b5a6-b3b0c455bd75",
+          "type": "INBOUND",
+          "title": "Tables",
+          "elementType": "HTML_SCREEN"
+        },
+        {
+          "id": "8d3e5f35-9094-4ee5-b9dc-5c6af2850e0f",
+          "type": "OUTBOUND",
+          "title": "Table Deleted",
+          "elementType": "EVENT"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Delete Table",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "events": [
+    {
+      "id": "8d3e5f35-9094-4ee5-b9dc-5c6af2850e0f",
+      "title": "Table Deleted",
+      "type": "EVENT",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": true,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "fe6583dc-aeaf-471a-b51b-7a7dd096ec75",
+          "type": "OUTBOUND",
+          "title": "Seat Availability",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "db5a7975-5189-48c1-81ad-1325292ed3f7",
+          "type": "OUTBOUND",
+          "title": "Tables",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "a1d2cc55-7715-4329-a50b-9a14d6dd53cc",
+          "type": "INBOUND",
+          "title": "Delete Table",
+          "elementType": "COMMAND"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Swimlane",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Delete Table",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "readmodels": [],
+  "screens": [
+    {
+      "id": "cc9a9254-33b5-4d3b-b5a6-b3b0c455bd75",
+      "title": "Tables",
+      "type": "HTML_SCREEN",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": true,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "name",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Table Added"
+        },
+        {
+          "name": "room",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Table Added"
+        },
+        {
+          "name": "seats",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Table Added"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "a1d2cc55-7715-4329-a50b-9a14d6dd53cc",
+          "type": "OUTBOUND",
+          "title": "Delete Table",
+          "elementType": "COMMAND"
+        },
+        {
+          "id": "db5a7975-5189-48c1-81ad-1325292ed3f7",
+          "type": "INBOUND",
+          "title": "Tables",
+          "elementType": "READMODEL"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Actor",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Delete Table",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "0bde7fa7-705e-4de4-b556-99cd9c9a94a0",
+      "title": "Can delete previously added table",
+      "chapter": "Managing Tables",
+      "sliceName": "Delete Table",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "ad1e1105-15b9-4e24-aef6-0892ec9e6866",
+          "title": "Table Added",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "room"
+            },
+            {
+              "name": "id",
+              "example": "1"
+            },
+            {
+              "name": "seats"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "a1d2cc55-7715-4329-a50b-9a14d6dd53cc",
+          "title": "Delete Table",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "id",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "8d3e5f35-9094-4ee5-b9dc-5c6af2850e0f",
+          "title": "Table Deleted",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "id",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    },
+    {
+      "id": "6b0d94bb-a594-4234-8975-3159ad649e21",
+      "title": "Cannot delete a table that is already deleted",
+      "chapter": "Managing Tables",
+      "sliceName": "Delete Table",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "ad1e1105-15b9-4e24-aef6-0892ec9e6866",
+          "title": "Table Added",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "room"
+            },
+            {
+              "name": "id",
+              "example": "1"
+            },
+            {
+              "name": "seats"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "8d3e5f35-9094-4ee5-b9dc-5c6af2850e0f",
+          "title": "Table Deleted",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "id",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "a1d2cc55-7715-4329-a50b-9a14d6dd53cc",
+          "title": "Delete Table",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "id",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "ca4d7db8-b03c-4a0f-ab68-6ab5c15a42bd",
+          "title": "Cannot delete a table that is already deleted",
+          "description": "Table is already deleted",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "d5566bdb-1e48-433d-a540-0d9133ddd77d",
+      "title": "Cannot delete a table that is not added",
+      "chapter": "Managing Tables",
+      "sliceName": "Delete Table",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [],
+      "when": [
+        {
+          "id": "a1d2cc55-7715-4329-a50b-9a14d6dd53cc",
+          "title": "Delete Table",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "id",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "f35036a8-5913-4b4d-be41-394daf25d012",
+          "title": "Cannot delete a table that is not added",
+          "description": "No table with id 1",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": []
+}

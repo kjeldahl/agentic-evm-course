@@ -1,0 +1,398 @@
+{
+  "id": "a1703ac3-1c6f-4d44-8b48-82cac44cf077",
+  "title": "ActiveReservationView",
+  "status": "Created",
+  "sliceType": "STATE_VIEW",
+  "chapter": "Reservations",
+  "context": "Restaurant",
+  "commands": [],
+  "events": [],
+  "readmodels": [
+    {
+      "id": "cf6346e4-161c-4766-9a71-fd810c503ad7",
+      "title": "ActiveReservationView",
+      "type": "READMODEL",
+      "fields": [
+        {
+          "name": "confirmationCode",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": true,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.confirmationCode"
+        },
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.email"
+        },
+        {
+          "name": "start",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.start"
+        },
+        {
+          "name": "end",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.end"
+        },
+        {
+          "name": "numberOfPeople",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.numberOfPeople"
+        },
+        {
+          "name": "status",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "latest:ReservationPlaced.confirmationCode"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "type": "INBOUND",
+          "title": "ReservationPlaced",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "007f83d4-d9c3-4273-a0f5-04e23f0eec72",
+          "type": "OUTBOUND",
+          "title": "Your Active Reservations",
+          "elementType": "HTML_SCREEN"
+        },
+        {
+          "id": "592528fa-0f4a-4cd2-a2f1-b429b70a134d",
+          "type": "INBOUND",
+          "title": "ReservationCancelled",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "a8ec53fc-cbd0-4789-8d13-e2480f6860da",
+          "type": "OUTBOUND",
+          "title": "Your Active Reservations",
+          "elementType": "HTML_SCREEN"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "ActiveReservationView",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": true,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "screens": [
+    {
+      "id": "007f83d4-d9c3-4273-a0f5-04e23f0eec72",
+      "title": "Your Active Reservations",
+      "type": "HTML_SCREEN",
+      "fields": [
+        {
+          "name": "confirmationCode",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ActiveReservationView.confirmationCode"
+        },
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ActiveReservationView.email"
+        },
+        {
+          "name": "start",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ActiveReservationView.start"
+        },
+        {
+          "name": "end",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ActiveReservationView.end"
+        },
+        {
+          "name": "numberOfPeople",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ActiveReservationView.numberOfPeople"
+        },
+        {
+          "name": "status",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ActiveReservationView.status"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "cf6346e4-161c-4766-9a71-fd810c503ad7",
+          "type": "INBOUND",
+          "title": "ActiveReservationView",
+          "elementType": "READMODEL"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "GUEST",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "ActiveReservationView",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "cb634882-ff65-4332-9904-2a468c3b40c9",
+      "title": "UI shows active reservations",
+      "chapter": "Reservations",
+      "sliceName": "ActiveReservationView",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "title": "ReservationPlaced",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [],
+      "then": [
+        {
+          "id": "cf6346e4-161c-4766-9a71-fd810c503ad7",
+          "title": "ActiveReservationView",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            },
+            {
+              "name": "status",
+              "example": "ACTIVE"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    },
+    {
+      "id": "0ef38231-eb3c-49de-b091-edefe599cba7",
+      "title": "Show an empty list if no reservations are made",
+      "chapter": "Reservations",
+      "sliceName": "ActiveReservationView",
+      "vertical": false,
+      "expectEmptyList": true,
+      "examples": [],
+      "given": [],
+      "when": [],
+      "then": [
+        {
+          "id": "cf6346e4-161c-4766-9a71-fd810c503ad7",
+          "title": "ActiveReservationView",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            },
+            {
+              "name": "status",
+              "example": "ACTIVE"
+            }
+          ],
+          "expectEmptyList": true
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": []
+}

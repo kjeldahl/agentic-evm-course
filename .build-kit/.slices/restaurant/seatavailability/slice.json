@@ -1,0 +1,336 @@
+{
+  "id": "4d1fc13b-1b3a-4e34-beb5-d11ba2232d39",
+  "title": "Seat Availability",
+  "status": "Created",
+  "sliceType": "STATE_VIEW",
+  "chapter": "Table Reservations (backup - full workflow)",
+  "context": "Restaurant",
+  "commands": [],
+  "events": [],
+  "readmodels": [
+    {
+      "id": "fe6583dc-aeaf-471a-b51b-7a7dd096ec75",
+      "title": "Seat Availability",
+      "type": "READMODEL",
+      "fields": [
+        {
+          "name": "reservationDate",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Reservation Made.reservationDate"
+        },
+        {
+          "name": "timeSlot",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Reservation Made.timeSlot"
+        },
+        {
+          "name": "totalSeats",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "aggregate:Table Added.seats"
+        },
+        {
+          "name": "reservedSeats",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "aggregate:Reservation Made.partySize"
+        },
+        {
+          "name": "remainingSeats",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "derived:totalSeats - reservedSeats"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "ad1e1105-15b9-4e24-aef6-0892ec9e6866",
+          "type": "INBOUND",
+          "title": "Table Added",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "8d3e5f35-9094-4ee5-b9dc-5c6af2850e0f",
+          "type": "INBOUND",
+          "title": "Table Deleted",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "2d0b342f-53de-429d-b7b5-39760651a7a0",
+          "type": "OUTBOUND",
+          "title": "Book a Table",
+          "elementType": "HTML_SCREEN"
+        },
+        {
+          "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+          "type": "INBOUND",
+          "title": "Reservation Made",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "22112e07-c44b-4ac4-a8ee-304f3aa54d01",
+          "type": "OUTBOUND",
+          "title": "Book a Table",
+          "elementType": "HTML_SCREEN"
+        },
+        {
+          "id": "7b7f6cdc-73e1-42ec-ad36-fc1a12ea1e04",
+          "type": "INBOUND",
+          "title": "Reservation Cancelled",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "44fc901b-ba89-4aba-ad13-8fdadf48159d",
+          "type": "OUTBOUND",
+          "title": "Book a Table",
+          "elementType": "HTML_SCREEN"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Seat Availability",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": true,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": [
+        "Time slots have no origin in the model. Seat Availability.timeSlot and .reservationDate are mapped to Reservation Made.*, but the slot grid (18:00 / 20:00 / 22:00) exists before anyone books - a slot with zero reservations must still show a row, and today nothing on the board creates one. Is the slot list fixed configuration (then say so in a note and change the mapping to derived:), or is there a missing concept that belongs next to 'seats' in Managing Tables?"
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "id": "2d0b342f-53de-429d-b7b5-39760651a7a0",
+      "title": "Book a Table",
+      "type": "HTML_SCREEN",
+      "fields": [
+        {
+          "name": "availableTimeSlot",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "List",
+          "subfields": [],
+          "mapping": "Seat Availability.timeSlot"
+        },
+        {
+          "name": "remainingSeats",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "List",
+          "subfields": [],
+          "mapping": "Seat Availability.remainingSeats"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "fe6583dc-aeaf-471a-b51b-7a7dd096ec75",
+          "type": "INBOUND",
+          "title": "Seat Availability",
+          "elementType": "READMODEL"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Guest",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Seat Availability",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "processors": [],
+  "tables": [],
+  "specifications": [],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": [],
+  "storylines": [
+    {
+      "id": "40e22315-bca2-4111-92a2-89607ea9e66a",
+      "title": "Capacity builds up as tables come and go",
+      "elements": [
+        {
+          "id": "fe6583dc-aeaf-471a-b51b-7a7dd096ec75",
+          "title": "Seat Availability",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [],
+          "expectEmptyList": true
+        },
+        {
+          "id": "8493cd28-bc9b-4d48-adf4-7d5eea9664db",
+          "title": "Table Added",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "id",
+              "example": "T1"
+            },
+            {
+              "name": "name",
+              "example": "Window"
+            },
+            {
+              "name": "room",
+              "example": "Main"
+            },
+            {
+              "name": "seats",
+              "example": "12"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "fe6583dc-aeaf-471a-b51b-7a7dd096ec75",
+          "title": "Seat Availability",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [],
+          "expectEmptyList": false
+        },
+        {
+          "id": "8493cd28-bc9b-4d48-adf4-7d5eea9664db",
+          "title": "Table Added",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "id",
+              "example": "T2"
+            },
+            {
+              "name": "name",
+              "example": "Corner"
+            },
+            {
+              "name": "room",
+              "example": "Main"
+            },
+            {
+              "name": "seats",
+              "example": "8"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "fe6583dc-aeaf-471a-b51b-7a7dd096ec75",
+          "title": "Seat Availability",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [],
+          "expectEmptyList": false
+        },
+        {
+          "id": "a5867f18-3835-4060-a96a-51f539ceb71d",
+          "title": "Table Deleted",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "id",
+              "example": "T2"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "fe6583dc-aeaf-471a-b51b-7a7dd096ec75",
+          "title": "Seat Availability",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [],
+          "expectEmptyList": false
+        }
+      ]
+    }
+  ]
+}

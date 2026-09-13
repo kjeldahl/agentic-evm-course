@@ -1,0 +1,1058 @@
+{
+  "id": "8a1b94f0-7473-4ca4-b003-080da35c7eec",
+  "title": "Make Reservation",
+  "status": "Created",
+  "sliceType": "STATE_CHANGE",
+  "chapter": "Table Reservations (backup - full workflow)",
+  "context": "Restaurant",
+  "commands": [
+    {
+      "id": "fe602014-c681-4fe3-975b-6383ce500d53",
+      "title": "Make Reservation",
+      "type": "COMMAND",
+      "fields": [
+        {
+          "name": "guestName",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "user-input"
+        },
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "user-input"
+        },
+        {
+          "name": "reservationDate",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "user-input"
+        },
+        {
+          "name": "timeSlot",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "user-input"
+        },
+        {
+          "name": "partySize",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "user-input"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "ae28a0b9-7ac8-4401-bb9f-b7c98264b1af",
+          "type": "INBOUND",
+          "title": "Book a Table",
+          "elementType": "HTML_SCREEN"
+        },
+        {
+          "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+          "type": "OUTBOUND",
+          "title": "Reservation Made",
+          "elementType": "EVENT"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Make Reservation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": [
+        "No clock is modelled. The scenario 'Cannot book a date in the past' states the current date in prose only (description: 'The current date is 10.09.2026'). Same limitation as 'Can only cancel if not started yet' in Vacation Planning. A human reads it fine; a code generator cannot. Should current-date be an explicit command input, or is prose accepted here?"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+      "title": "Reservation Made",
+      "type": "EVENT",
+      "fields": [
+        {
+          "name": "reservationId",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": true,
+          "type": "UUID",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "derived:uuid4()"
+        },
+        {
+          "name": "guestName",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Make Reservation.guestName"
+        },
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Make Reservation.email"
+        },
+        {
+          "name": "reservationDate",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Make Reservation.reservationDate"
+        },
+        {
+          "name": "timeSlot",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Make Reservation.timeSlot"
+        },
+        {
+          "name": "partySize",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Make Reservation.partySize"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "fe6583dc-aeaf-471a-b51b-7a7dd096ec75",
+          "type": "OUTBOUND",
+          "title": "Seat Availability",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "9becabea-5222-41bc-aa14-8d6c4a27649c",
+          "type": "OUTBOUND",
+          "title": "My Reservation",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "fe602014-c681-4fe3-975b-6383ce500d53",
+          "type": "INBOUND",
+          "title": "Make Reservation",
+          "elementType": "COMMAND"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Swimlane",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Make Reservation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "readmodels": [],
+  "screens": [
+    {
+      "id": "ae28a0b9-7ac8-4401-bb9f-b7c98264b1af",
+      "title": "Book a Table",
+      "type": "HTML_SCREEN",
+      "fields": [
+        {
+          "name": "guestName",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Make Reservation.guestName"
+        },
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Make Reservation.email"
+        },
+        {
+          "name": "reservationDate",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Make Reservation.reservationDate"
+        },
+        {
+          "name": "timeSlot",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Make Reservation.timeSlot"
+        },
+        {
+          "name": "partySize",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Make Reservation.partySize"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "fe602014-c681-4fe3-975b-6383ce500d53",
+          "type": "OUTBOUND",
+          "title": "Make Reservation",
+          "elementType": "COMMAND"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Guest",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Make Reservation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": [
+        "The blank-creation-form exemption claimed for this screen in Step 5i does not hold as rendered. This copy has no incoming READMODEL and was exempted as a form with no prior state - but its marked component contains a time-slot <select> listing 18:00 / 20:00. Those options ARE prior state, and Make Reservation.timeSlot is mapped 'user-input' with nothing on the board supplying the choices. Resolve one of two ways: (a) connect Seat Availability -> this screen and drop the exemption, or (b) declare the slot list fixed configuration and say so in a note. Same root cause as the time-slot QUESTION on Seat Availability."
+      ]
+    }
+  ],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "2aae9bf0-23e7-47cc-a2eb-78dee7488dea",
+      "title": "Booking a table when seats are free",
+      "chapter": "Table Reservations (backup - full workflow)",
+      "sliceName": "Make Reservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "8493cd28-bc9b-4d48-adf4-7d5eea9664db",
+          "title": "Table Added",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Window"
+            },
+            {
+              "name": "room",
+              "example": "Main"
+            },
+            {
+              "name": "id",
+              "example": "T1"
+            },
+            {
+              "name": "seats",
+              "example": "20"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "fe602014-c681-4fe3-975b-6383ce500d53",
+          "title": "Make Reservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+          "title": "Reservation Made",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            },
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    },
+    {
+      "id": "22878188-ded8-484c-9974-8095b0a5935f",
+      "title": "Party size must be at least one",
+      "chapter": "Table Reservations (backup - full workflow)",
+      "sliceName": "Make Reservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [],
+      "when": [
+        {
+          "id": "fe602014-c681-4fe3-975b-6383ce500d53",
+          "title": "Make Reservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "0"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "79554323-8cd1-4d48-9639-6d014b77b024",
+          "title": "Party size must be at least one",
+          "description": "party size must be at least 1",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "d2c90f30-95fe-46f4-a2bd-5f8e8157ae70",
+      "title": "Cannot book a date in the past",
+      "chapter": "Table Reservations (backup - full workflow)",
+      "sliceName": "Make Reservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [],
+      "when": [
+        {
+          "id": "fe602014-c681-4fe3-975b-6383ce500d53",
+          "title": "Make Reservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "01.01.2020"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "ac66a5f3-267b-42d4-8af0-53c8fbfea873",
+          "title": "Cannot book a date in the past",
+          "description": "reservation date is in the past",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "e1c9fab7-1053-46c0-b326-fce3fd6e3df8",
+      "title": "Cannot book while the restaurant is closed",
+      "chapter": "Table Reservations (backup - full workflow)",
+      "sliceName": "Make Reservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "77cdf58a-87f5-40ca-b8bc-3459aca00aa0",
+          "title": "Vacation Registered",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Winter"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "08.02.2026"
+            },
+            {
+              "name": "notes",
+              "example": ""
+            },
+            {
+              "name": "vacationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "fe602014-c681-4fe3-975b-6383ce500d53",
+          "title": "Make Reservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "03.02.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "fae4aa24-3112-4120-a6bd-f3163abc6862",
+          "title": "Cannot book while the restaurant is closed",
+          "description": "the restaurant is closed on that date",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "77868083-8bd6-46f8-8ea5-b8263bc43212",
+      "title": "Cannot book more seats than remain in the slot",
+      "chapter": "Table Reservations (backup - full workflow)",
+      "sliceName": "Make Reservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "8493cd28-bc9b-4d48-adf4-7d5eea9664db",
+          "title": "Table Added",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Window"
+            },
+            {
+              "name": "room",
+              "example": "Main"
+            },
+            {
+              "name": "id",
+              "example": "T1"
+            },
+            {
+              "name": "seats",
+              "example": "20"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+          "title": "Reservation Made",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            },
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "18"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "fe602014-c681-4fe3-975b-6383ce500d53",
+          "title": "Make Reservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "b037bafd-7957-42da-b196-399d7e3f64e8",
+          "title": "Cannot book more seats than remain in the slot",
+          "description": "only 2 seats remain in that time slot",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "117d6746-3e8c-4c5b-8cb5-dc76b5dcbaf2",
+      "title": "Booking succeeds once the closure is cancelled",
+      "chapter": "Table Reservations (backup - full workflow)",
+      "sliceName": "Make Reservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "77cdf58a-87f5-40ca-b8bc-3459aca00aa0",
+          "title": "Vacation Registered",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Winter"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "08.02.2026"
+            },
+            {
+              "name": "notes",
+              "example": ""
+            },
+            {
+              "name": "vacationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "ca172cbe-5273-427c-ae1d-5c4c3f775a54",
+          "title": "Vacation Cancelled",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "vacationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "fe602014-c681-4fe3-975b-6383ce500d53",
+          "title": "Make Reservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "03.02.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+          "title": "Reservation Made",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            },
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "03.02.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    },
+    {
+      "id": "8c03ee44-9d8e-42c3-885b-71edac0b5827",
+      "title": "A cancelled reservation frees its seats for a new booking",
+      "chapter": "Table Reservations (backup - full workflow)",
+      "sliceName": "Make Reservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "8493cd28-bc9b-4d48-adf4-7d5eea9664db",
+          "title": "Table Added",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Window"
+            },
+            {
+              "name": "room",
+              "example": "Main"
+            },
+            {
+              "name": "id",
+              "example": "T1"
+            },
+            {
+              "name": "seats",
+              "example": "20"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+          "title": "Reservation Made",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            },
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "20"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "7b7f6cdc-73e1-42ec-ad36-fc1a12ea1e04",
+          "title": "Reservation Cancelled",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "fe602014-c681-4fe3-975b-6383ce500d53",
+          "title": "Make Reservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+          "title": "Reservation Made",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "2"
+            },
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": []
+}

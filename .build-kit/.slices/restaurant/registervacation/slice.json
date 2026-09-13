@@ -1,0 +1,619 @@
+{
+  "id": "c5fcf19d-e4bc-414f-92e6-0dfaffe8f3d5",
+  "title": "Register Vacation",
+  "status": "Created",
+  "sliceType": "STATE_CHANGE",
+  "chapter": "Vacation Planning",
+  "context": "Restaurant",
+  "commands": [
+    {
+      "id": "30a5564e-c17c-434f-88de-ffbbb2c64d2b",
+      "title": "Register Vacation",
+      "type": "COMMAND",
+      "fields": [
+        {
+          "name": "name",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "first_day",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "last_day",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "notes",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "7d465ac3-84b5-4421-9b06-8c2eb826c958",
+          "type": "OUTBOUND",
+          "title": "Vacation Registered",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "4b804900-d159-480e-aa6f-2e1431faf8ec",
+          "type": "INBOUND",
+          "title": "screen",
+          "elementType": "SCREEN"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Register Vacation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "events": [
+    {
+      "id": "7d465ac3-84b5-4421-9b06-8c2eb826c958",
+      "title": "Vacation Registered",
+      "type": "EVENT",
+      "fields": [
+        {
+          "name": "name",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "first_day",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "last_day",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "notes",
+          "optional": true,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "vacationId",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": true,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": true,
+          "type": "UUID",
+          "cardinality": "Single",
+          "subfields": []
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "c6cd844f-ea64-4d7a-9f39-eeb50d97ff9a",
+          "type": "OUTBOUND",
+          "title": "Closed Dates",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "30a5564e-c17c-434f-88de-ffbbb2c64d2b",
+          "type": "INBOUND",
+          "title": "Register Vacation",
+          "elementType": "COMMAND"
+        },
+        {
+          "id": "2ecb2116-0d4f-401c-a6e7-32b00179492f",
+          "type": "OUTBOUND",
+          "title": "Vacations",
+          "elementType": "READMODEL"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Swimlane",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Register Vacation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "readmodels": [],
+  "screens": [
+    {
+      "id": "4b804900-d159-480e-aa6f-2e1431faf8ec",
+      "title": "screen",
+      "type": "SCREEN",
+      "fields": [
+        {
+          "name": "name",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "first_day",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "last_day",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "notes",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "30a5564e-c17c-434f-88de-ffbbb2c64d2b",
+          "type": "OUTBOUND",
+          "title": "Register Vacation",
+          "elementType": "COMMAND"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Actor",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Register Vacation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": true,
+      "comments": []
+    }
+  ],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "30c0a374-572f-48bf-9902-84b8f8042e1a",
+      "title": "Registering first vacation",
+      "chapter": "Vacation Planning",
+      "sliceName": "Register Vacation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [],
+      "when": [
+        {
+          "id": "30a5564e-c17c-434f-88de-ffbbb2c64d2b",
+          "title": "Register Vacation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Winter"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "08.02.2026"
+            },
+            {
+              "name": "notes",
+              "example": "Off to the Alpines"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "7d465ac3-84b5-4421-9b06-8c2eb826c958",
+          "title": "Vacation Registered",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Winter"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "08.02.2026"
+            },
+            {
+              "name": "notes",
+              "example": "Off to the Alpines"
+            },
+            {
+              "name": "vacationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    },
+    {
+      "id": "bd05a8fe-fcf4-4b29-bfe1-6472d6f6ec20",
+      "title": "Must not overlap",
+      "chapter": "Vacation Planning",
+      "sliceName": "Register Vacation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "7d465ac3-84b5-4421-9b06-8c2eb826c958",
+          "title": "Vacation Registered",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Mid Winter"
+            },
+            {
+              "name": "first_day",
+              "example": "03.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "05.02.2026"
+            },
+            {
+              "name": "notes",
+              "example": "Mid Winter holiday"
+            },
+            {
+              "name": "vacationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "30a5564e-c17c-434f-88de-ffbbb2c64d2b",
+          "title": "Register Vacation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Winter"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "08.02.2026"
+            },
+            {
+              "name": "notes",
+              "example": "Off to the Alpines"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "c5f9aeb8-fbf6-4364-b465-746350f68d96",
+          "title": "Must not overlap",
+          "description": "Vacations cannot overlap",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "65082275-6f75-4417-8cf1-3867061506fe",
+      "title": "Must be at least one day",
+      "chapter": "Vacation Planning",
+      "sliceName": "Register Vacation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [],
+      "when": [
+        {
+          "id": "30a5564e-c17c-434f-88de-ffbbb2c64d2b",
+          "title": "Register Vacation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "name",
+              "example": "ZeroDays"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "notes",
+              "example": "Hmm"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "042043c2-5d9d-4dcd-a17f-3f35f5ebbe6c",
+          "title": "Must be at least one day",
+          "description": "Vacation must be at least one day",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "0f210c26-f3e0-416b-89f2-5783ce9b29e5",
+      "title": "Cancelled vacations release their period",
+      "chapter": "Vacation Planning",
+      "sliceName": "Register Vacation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "7d465ac3-84b5-4421-9b06-8c2eb826c958",
+          "title": "Vacation Registered",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name",
+              "example": "All 2026"
+            },
+            {
+              "name": "first_day",
+              "example": "01.01.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "31.12.2026"
+            },
+            {
+              "name": "notes"
+            },
+            {
+              "name": "vacationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "cb029f6a-de17-4ed8-9dc4-c8bce5e52435",
+          "title": "Vacation Cancelled",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "vacationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "30a5564e-c17c-434f-88de-ffbbb2c64d2b",
+          "title": "Register Vacation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Winter 2026"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "07.02.2026"
+            },
+            {
+              "name": "notes"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "7d465ac3-84b5-4421-9b06-8c2eb826c958",
+          "title": "Vacation Registered",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name",
+              "example": "Winter 2026"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "07.02.2026"
+            },
+            {
+              "name": "notes"
+            },
+            {
+              "name": "vacationId",
+              "example": "2"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": []
+}

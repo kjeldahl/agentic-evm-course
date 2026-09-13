@@ -1,0 +1,572 @@
+{
+  "id": "9a8ddb2c-61d8-40c2-bfba-6d6ac7f226c7",
+  "title": "PlaceReservation",
+  "status": "InProgress",
+  "sliceType": "STATE_CHANGE",
+  "chapter": "Reservations",
+  "context": "Restaurant",
+  "commands": [
+    {
+      "id": "fdc246aa-5fb9-4458-af13-5e0f67c7fb7d",
+      "title": "PlaceReservation",
+      "type": "COMMAND",
+      "fields": [
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "user-input"
+        },
+        {
+          "name": "start",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "user-input"
+        },
+        {
+          "name": "end",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "user-input"
+        },
+        {
+          "name": "numberOfPeople",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "user-input"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "f0fafde2-5d73-4f5d-ad0a-8f5f263be3d3",
+          "type": "INBOUND",
+          "title": "Book a Reservation",
+          "elementType": "HTML_SCREEN"
+        },
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "type": "OUTBOUND",
+          "title": "ReservationPlaced",
+          "elementType": "EVENT"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "PlaceReservation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "events": [
+    {
+      "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+      "title": "ReservationPlaced",
+      "type": "EVENT",
+      "fields": [
+        {
+          "name": "confirmationCode",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": true,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "derived:code()"
+        },
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "PlaceReservation.email"
+        },
+        {
+          "name": "start",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "PlaceReservation.start"
+        },
+        {
+          "name": "end",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "PlaceReservation.end"
+        },
+        {
+          "name": "numberOfPeople",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "PlaceReservation.numberOfPeople"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "fdc246aa-5fb9-4458-af13-5e0f67c7fb7d",
+          "type": "INBOUND",
+          "title": "PlaceReservation",
+          "elementType": "COMMAND"
+        },
+        {
+          "id": "cf6346e4-161c-4766-9a71-fd810c503ad7",
+          "type": "OUTBOUND",
+          "title": "ActiveReservationView",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "ccc8afab-708a-4dcc-9248-69dcd7d3a1c9",
+          "type": "OUTBOUND",
+          "title": "Outgoing Confirmations",
+          "elementType": "READMODEL"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Swimlane",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "PlaceReservation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "readmodels": [],
+  "screens": [
+    {
+      "id": "f0fafde2-5d73-4f5d-ad0a-8f5f263be3d3",
+      "title": "Book a Reservation",
+      "type": "HTML_SCREEN",
+      "fields": [
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "PlaceReservation.email"
+        },
+        {
+          "name": "start",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "PlaceReservation.start"
+        },
+        {
+          "name": "end",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "PlaceReservation.end"
+        },
+        {
+          "name": "numberOfPeople",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "PlaceReservation.numberOfPeople"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "fdc246aa-5fb9-4458-af13-5e0f67c7fb7d",
+          "type": "OUTBOUND",
+          "title": "PlaceReservation",
+          "elementType": "COMMAND"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "GUEST",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "PlaceReservation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "fff34765-b372-49e0-b867-ce7961c008f0",
+      "title": "A reservation is placed",
+      "chapter": "Reservations",
+      "sliceName": "PlaceReservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [],
+      "when": [
+        {
+          "id": "fdc246aa-5fb9-4458-af13-5e0f67c7fb7d",
+          "title": "PlaceReservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "title": "ReservationPlaced",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    },
+    {
+      "id": "948c2572-edf2-4711-a1e0-6ff76469692c",
+      "title": "No duplicates allowed",
+      "chapter": "Reservations",
+      "sliceName": "PlaceReservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "title": "ReservationPlaced",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "fdc246aa-5fb9-4458-af13-5e0f67c7fb7d",
+          "title": "PlaceReservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "1b1acc6d-477b-4eda-9bb1-fdcefd73daa0",
+          "title": "No duplicates allowed",
+          "description": "No duplicate reservations allowed",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "f4d6edb6-947a-42dc-80fc-26054be21b9c",
+      "title": "Can place to separate reservations",
+      "chapter": "Reservations",
+      "sliceName": "PlaceReservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "title": "ReservationPlaced",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "fdc246aa-5fb9-4458-af13-5e0f67c7fb7d",
+          "title": "PlaceReservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "15.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "15.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "2"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "title": "ReservationPlaced",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0084"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "15.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "15.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "2"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": []
+}

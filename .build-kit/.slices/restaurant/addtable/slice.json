@@ -1,0 +1,409 @@
+{
+  "id": "b4c9c28e-48ea-4e70-9737-7edc4994d7d2",
+  "title": "Add Table",
+  "status": "Created",
+  "sliceType": "STATE_CHANGE",
+  "chapter": "Managing Tables",
+  "context": "Restaurant",
+  "commands": [
+    {
+      "id": "7862fbeb-b645-464e-8286-cdc2927088c9",
+      "title": "Add Table",
+      "type": "COMMAND",
+      "fields": [
+        {
+          "name": "name",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "room",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "seats",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": []
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "ad1e1105-15b9-4e24-aef6-0892ec9e6866",
+          "type": "OUTBOUND",
+          "title": "Table Added",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "25ca583a-5058-4dc4-9c42-3b5b3f0bc0ac",
+          "type": "INBOUND",
+          "title": "Tables",
+          "elementType": "HTML_SCREEN"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Add Table",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "events": [
+    {
+      "id": "ad1e1105-15b9-4e24-aef6-0892ec9e6866",
+      "title": "Table Added",
+      "type": "EVENT",
+      "fields": [
+        {
+          "name": "id",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": true,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "name",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "room",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "seats",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": []
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "fe6583dc-aeaf-471a-b51b-7a7dd096ec75",
+          "type": "OUTBOUND",
+          "title": "Seat Availability",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "7862fbeb-b645-464e-8286-cdc2927088c9",
+          "type": "INBOUND",
+          "title": "Add Table",
+          "elementType": "COMMAND"
+        },
+        {
+          "id": "db5a7975-5189-48c1-81ad-1325292ed3f7",
+          "type": "OUTBOUND",
+          "title": "Tables",
+          "elementType": "READMODEL"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Swimlane",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Add Table",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "readmodels": [],
+  "screens": [
+    {
+      "id": "25ca583a-5058-4dc4-9c42-3b5b3f0bc0ac",
+      "title": "Tables",
+      "type": "HTML_SCREEN",
+      "fields": [
+        {
+          "name": "name",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "room",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "id",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": []
+        },
+        {
+          "name": "seats",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": []
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "7862fbeb-b645-464e-8286-cdc2927088c9",
+          "type": "OUTBOUND",
+          "title": "Add Table",
+          "elementType": "COMMAND"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Actor",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Add Table",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "5e004d97-4cc0-4cdd-90ba-06d72f60bd1a",
+      "title": "Adding a table",
+      "chapter": "Managing Tables",
+      "sliceName": "Add Table",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [],
+      "when": [
+        {
+          "id": "7862fbeb-b645-464e-8286-cdc2927088c9",
+          "title": "Add Table",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "name",
+              "example": "T-1"
+            },
+            {
+              "name": "room"
+            },
+            {
+              "name": "seats",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "ad1e1105-15b9-4e24-aef6-0892ec9e6866",
+          "title": "Table Added",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "id",
+              "example": "1"
+            },
+            {
+              "name": "name",
+              "example": "T-1"
+            },
+            {
+              "name": "room"
+            },
+            {
+              "name": "seats",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    },
+    {
+      "id": "c4f0e3d8-2f38-428a-a68d-213342debdca",
+      "title": "table  name is unique",
+      "chapter": "Managing Tables",
+      "sliceName": "Add Table",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "ad1e1105-15b9-4e24-aef6-0892ec9e6866",
+          "title": "Table Added",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "id",
+              "example": "1"
+            },
+            {
+              "name": "name",
+              "example": "T-1"
+            },
+            {
+              "name": "room"
+            },
+            {
+              "name": "seats",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "7862fbeb-b645-464e-8286-cdc2927088c9",
+          "title": "Add Table",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "name",
+              "example": "T-1"
+            },
+            {
+              "name": "room"
+            },
+            {
+              "name": "seats",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "20822b75-6017-4c99-a6c0-e73d7c3b20c8",
+          "title": "table  name is unique",
+          "description": "table already exists",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": []
+}

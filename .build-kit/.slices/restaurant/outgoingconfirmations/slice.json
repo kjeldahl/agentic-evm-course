@@ -1,0 +1,537 @@
+{
+  "id": "1f06be24-5583-4382-9f0d-ac6102921409",
+  "title": "Outgoing Confirmations",
+  "status": "Created",
+  "sliceType": "STATE_VIEW",
+  "chapter": "Reservations",
+  "context": "Restaurant",
+  "commands": [],
+  "events": [],
+  "readmodels": [
+    {
+      "id": "ccc8afab-708a-4dcc-9248-69dcd7d3a1c9",
+      "title": "Outgoing Confirmations",
+      "type": "READMODEL",
+      "fields": [
+        {
+          "name": "confirmationCode",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": true,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.confirmationCode"
+        },
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.email"
+        },
+        {
+          "name": "start",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.start"
+        },
+        {
+          "name": "end",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.end"
+        },
+        {
+          "name": "numberOfPeople",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.numberOfPeople"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "9e44d7cc-62c7-4171-ab4a-827b8752cb21",
+          "type": "INBOUND",
+          "title": "Confirmation Email Sent",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "type": "INBOUND",
+          "title": "ReservationPlaced",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "45120a03-8c27-4610-a9ff-e536dc2a35e6",
+          "type": "OUTBOUND",
+          "title": "Send Confirmation Emails",
+          "elementType": "AUTOMATION"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Outgoing Confirmations",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": true,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "screens": [],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "57d749d5-aad7-4341-89a9-bcc91ac44bce",
+      "title": "Add a todo confirmation email",
+      "chapter": "Reservations",
+      "sliceName": "Outgoing Confirmations",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "title": "ReservationPlaced",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [],
+      "then": [
+        {
+          "id": "ccc8afab-708a-4dcc-9248-69dcd7d3a1c9",
+          "title": "Outgoing Confirmations",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    },
+    {
+      "id": "09d6bc37-a276-42b1-8d7a-f8832cd519c4",
+      "title": "Removes todo when email is sent",
+      "chapter": "Reservations",
+      "sliceName": "Outgoing Confirmations",
+      "vertical": false,
+      "expectEmptyList": true,
+      "examples": [],
+      "given": [
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "title": "ReservationPlaced",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": true
+        },
+        {
+          "id": "9e44d7cc-62c7-4171-ab4a-827b8752cb21",
+          "title": "Confirmation Email Sent",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            }
+          ],
+          "expectEmptyList": true
+        }
+      ],
+      "when": [],
+      "then": [
+        {
+          "id": "ccc8afab-708a-4dcc-9248-69dcd7d3a1c9",
+          "title": "Outgoing Confirmations",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": true
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": [],
+  "storylines": [
+    {
+      "id": "bd57942f-17c5-4cbe-8bc4-938e7de91a95",
+      "title": "Confirmation emails are sent from the todo list",
+      "elements": [
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "title": "ReservationPlaced",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "ccc8afab-708a-4dcc-9248-69dcd7d3a1c9",
+          "title": "Outgoing Confirmations",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "title": "ReservationPlaced",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-2342"
+            },
+            {
+              "name": "email",
+              "example": "johnny@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "ccc8afab-708a-4dcc-9248-69dcd7d3a1c9",
+          "title": "Outgoing Confirmations",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "9e44d7cc-62c7-4171-ab4a-827b8752cb21",
+          "title": "Confirmation Email Sent",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "ccc8afab-708a-4dcc-9248-69dcd7d3a1c9",
+          "title": "Outgoing Confirmations",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "9e44d7cc-62c7-4171-ab4a-827b8752cb21",
+          "title": "Confirmation Email Sent",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-2342"
+            },
+            {
+              "name": "email",
+              "example": "johnny@example.com"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "ccc8afab-708a-4dcc-9248-69dcd7d3a1c9",
+          "title": "Outgoing Confirmations",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "id": "b85075ba-0a69-4fc2-b6bd-02c161b4044e",
+  "title": "Cancel Vacation",
+  "status": "Created",
+  "sliceType": "STATE_CHANGE",
+  "chapter": "Vacation Planning",
+  "context": "Restaurant",
+  "commands": [
+    {
+      "id": "f3460b28-fc15-458e-bf55-8a32c6b7259c",
+      "title": "Cancel Vacation",
+      "type": "COMMAND",
+      "fields": [
+        {
+          "name": "vacationId",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": true,
+          "type": "UUID",
+          "cardinality": "Single",
+          "subfields": []
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "8a3a9f1e-9180-4038-92e5-3ff1b0ed4c05",
+          "type": "INBOUND",
+          "title": "screen",
+          "elementType": "SCREEN"
+        },
+        {
+          "id": "cb029f6a-de17-4ed8-9dc4-c8bce5e52435",
+          "type": "OUTBOUND",
+          "title": "Vacation Cancelled",
+          "elementType": "EVENT"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Cancel Vacation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "events": [
+    {
+      "id": "cb029f6a-de17-4ed8-9dc4-c8bce5e52435",
+      "title": "Vacation Cancelled",
+      "type": "EVENT",
+      "fields": [
+        {
+          "name": "vacationId",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": true,
+          "edited": false,
+          "idAttribute": true,
+          "type": "UUID",
+          "cardinality": "Single",
+          "subfields": []
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "c6cd844f-ea64-4d7a-9f39-eeb50d97ff9a",
+          "type": "OUTBOUND",
+          "title": "Closed Dates",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "f3460b28-fc15-458e-bf55-8a32c6b7259c",
+          "type": "INBOUND",
+          "title": "Cancel Vacation",
+          "elementType": "COMMAND"
+        },
+        {
+          "id": "2ecb2116-0d4f-401c-a6e7-32b00179492f",
+          "type": "OUTBOUND",
+          "title": "Vacations",
+          "elementType": "READMODEL"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Swimlane",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Cancel Vacation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "readmodels": [],
+  "screens": [
+    {
+      "id": "8a3a9f1e-9180-4038-92e5-3ff1b0ed4c05",
+      "title": "screen",
+      "type": "SCREEN",
+      "fields": [],
+      "dependencies": [
+        {
+          "id": "2ecb2116-0d4f-401c-a6e7-32b00179492f",
+          "type": "INBOUND",
+          "title": "Vacations",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "f3460b28-fc15-458e-bf55-8a32c6b7259c",
+          "type": "OUTBOUND",
+          "title": "Cancel Vacation",
+          "elementType": "COMMAND"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Actor",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Cancel Vacation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": true,
+      "comments": []
+    }
+  ],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "bbfa63aa-439c-42f6-b0d2-6b81c9531d91",
+      "title": "Cancellation of registered vacation",
+      "chapter": "Vacation Planning",
+      "sliceName": "Cancel Vacation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "7d465ac3-84b5-4421-9b06-8c2eb826c958",
+          "title": "Vacation Registered",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "first_day"
+            },
+            {
+              "name": "last_day"
+            },
+            {
+              "name": "notes"
+            },
+            {
+              "name": "vacationId"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "f3460b28-fc15-458e-bf55-8a32c6b7259c",
+          "title": "Cancel Vacation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "vacationId"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "cb029f6a-de17-4ed8-9dc4-c8bce5e52435",
+          "title": "Vacation Cancelled",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "vacationId"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    },
+    {
+      "id": "54570f9a-486b-467b-83f7-07ee40928b72",
+      "title": "Can only cancel if not started yet",
+      "chapter": "Vacation Planning",
+      "sliceName": "Cancel Vacation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "7d465ac3-84b5-4421-9b06-8c2eb826c958",
+          "title": "Vacation Registered",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day"
+            },
+            {
+              "name": "notes"
+            },
+            {
+              "name": "vacationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "f3460b28-fc15-458e-bf55-8a32c6b7259c",
+          "title": "Cancel Vacation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "vacationId"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "51dc9f88-fd3f-447d-b055-d88cdf8193eb",
+          "title": "Can only cancel if not started yet",
+          "description": "Cannot cancel vacation in progress",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": []
+}

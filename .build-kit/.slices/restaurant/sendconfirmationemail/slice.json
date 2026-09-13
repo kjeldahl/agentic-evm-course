@@ -1,0 +1,398 @@
+{
+  "id": "c6920016-e068-4fe1-99ef-5c1340d56e56",
+  "title": "Send Confirmation Email",
+  "status": "Created",
+  "sliceType": "AUTOMATION",
+  "chapter": "Reservations",
+  "context": "Restaurant",
+  "commands": [
+    {
+      "id": "84564d13-812e-4cbb-ae4d-06980f5a4be7",
+      "title": "Send Confirmation Email",
+      "type": "COMMAND",
+      "fields": [
+        {
+          "name": "confirmationCode",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": true,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.confirmationCode"
+        },
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.email"
+        },
+        {
+          "name": "start",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.start"
+        },
+        {
+          "name": "end",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.end"
+        },
+        {
+          "name": "numberOfPeople",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.numberOfPeople"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "9e44d7cc-62c7-4171-ab4a-827b8752cb21",
+          "type": "OUTBOUND",
+          "title": "Confirmation Email Sent",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "45120a03-8c27-4610-a9ff-e536dc2a35e6",
+          "type": "INBOUND",
+          "title": "Send Confirmation Emails",
+          "elementType": "AUTOMATION"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Send Confirmation Email",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "events": [
+    {
+      "id": "9e44d7cc-62c7-4171-ab4a-827b8752cb21",
+      "title": "Confirmation Email Sent",
+      "type": "EVENT",
+      "fields": [
+        {
+          "name": "confirmationCode",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": true,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.confirmationCode"
+        },
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.email"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "84564d13-812e-4cbb-ae4d-06980f5a4be7",
+          "type": "INBOUND",
+          "title": "Send Confirmation Email",
+          "elementType": "COMMAND"
+        },
+        {
+          "id": "ccc8afab-708a-4dcc-9248-69dcd7d3a1c9",
+          "type": "OUTBOUND",
+          "title": "Outgoing Confirmations",
+          "elementType": "READMODEL"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Swimlane",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Send Confirmation Email",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "readmodels": [],
+  "screens": [],
+  "processors": [
+    {
+      "id": "45120a03-8c27-4610-a9ff-e536dc2a35e6",
+      "title": "Send Confirmation Emails",
+      "type": "AUTOMATION",
+      "fields": [
+        {
+          "name": "confirmationCode",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": true,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.confirmationCode"
+        },
+        {
+          "name": "email",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.email"
+        },
+        {
+          "name": "start",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.start"
+        },
+        {
+          "name": "end",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "DateTime",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.end"
+        },
+        {
+          "name": "numberOfPeople",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "ReservationPlaced.numberOfPeople"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "ccc8afab-708a-4dcc-9248-69dcd7d3a1c9",
+          "type": "INBOUND",
+          "title": "Outgoing Confirmations",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "84564d13-812e-4cbb-ae4d-06980f5a4be7",
+          "type": "OUTBOUND",
+          "title": "Send Confirmation Email",
+          "elementType": "COMMAND"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "System",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Send Confirmation Email",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "a63fa168-ee69-4e14-8da5-c55f8b2ac9e8",
+      "title": "Marks the confirmation as sent",
+      "chapter": "Reservations",
+      "sliceName": "Send Confirmation Email",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "5994df07-ecd1-4b7c-b318-a186bc98a621",
+          "title": "ReservationPlaced",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "84564d13-812e-4cbb-ae4d-06980f5a4be7",
+          "title": "Send Confirmation Email",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "start",
+              "example": "14.03.2026 18:00"
+            },
+            {
+              "name": "end",
+              "example": "14.03.2026 20:00"
+            },
+            {
+              "name": "numberOfPeople",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "9e44d7cc-62c7-4171-ab4a-827b8752cb21",
+          "title": "Confirmation Email Sent",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "confirmationCode",
+              "example": "C0NF1RM-0042"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": []
+}

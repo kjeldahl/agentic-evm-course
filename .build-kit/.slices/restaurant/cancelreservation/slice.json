@@ -1,0 +1,437 @@
+{
+  "id": "5a74aab3-dc2e-4ea3-822b-a213e97b9a00",
+  "title": "Cancel Reservation",
+  "status": "Created",
+  "sliceType": "STATE_CHANGE",
+  "chapter": "Table Reservations (backup - full workflow)",
+  "context": "Restaurant",
+  "commands": [
+    {
+      "id": "9574f543-55c7-420e-99e9-6468c1216f9b",
+      "title": "Cancel Reservation",
+      "type": "COMMAND",
+      "fields": [
+        {
+          "name": "reservationId",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": true,
+          "type": "UUID",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "user-input"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "47f71152-16fc-4991-aa83-b180303473a8",
+          "type": "INBOUND",
+          "title": "My Reservation",
+          "elementType": "HTML_SCREEN"
+        },
+        {
+          "id": "7b7f6cdc-73e1-42ec-ad36-fc1a12ea1e04",
+          "type": "OUTBOUND",
+          "title": "Reservation Cancelled",
+          "elementType": "EVENT"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Cancel Reservation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": [
+        "reservationId is mapped 'user-input', but the issuing screen (My Reservation) IS connected to the My Reservation read model and displays this value - so the field does have a board source, unlike Make Reservation's inputs. Should the mapping be 'My Reservation.reservationId' to reflect that the guest selects a displayed reservation rather than typing an id? The accepted no-guest-identity decision (see the Notes lane in this column) explains why there is no session lookup, but it does not require the mapping to be user-input."
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "7b7f6cdc-73e1-42ec-ad36-fc1a12ea1e04",
+      "title": "Reservation Cancelled",
+      "type": "EVENT",
+      "fields": [
+        {
+          "name": "reservationId",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": true,
+          "type": "UUID",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Cancel Reservation.reservationId"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "fe6583dc-aeaf-471a-b51b-7a7dd096ec75",
+          "type": "OUTBOUND",
+          "title": "Seat Availability",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "9574f543-55c7-420e-99e9-6468c1216f9b",
+          "type": "INBOUND",
+          "title": "Cancel Reservation",
+          "elementType": "COMMAND"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Swimlane",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Cancel Reservation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "readmodels": [],
+  "screens": [
+    {
+      "id": "47f71152-16fc-4991-aa83-b180303473a8",
+      "title": "My Reservation",
+      "type": "HTML_SCREEN",
+      "fields": [
+        {
+          "name": "reservationId",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "UUID",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Cancel Reservation.reservationId"
+        },
+        {
+          "name": "guestName",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "My Reservation.guestName"
+        },
+        {
+          "name": "reservationDate",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "My Reservation.reservationDate"
+        },
+        {
+          "name": "timeSlot",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "String",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "My Reservation.timeSlot"
+        },
+        {
+          "name": "partySize",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Number",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "My Reservation.partySize"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "9becabea-5222-41bc-aa14-8d6c4a27649c",
+          "type": "INBOUND",
+          "title": "My Reservation",
+          "elementType": "READMODEL"
+        },
+        {
+          "id": "9574f543-55c7-420e-99e9-6468c1216f9b",
+          "type": "OUTBOUND",
+          "title": "Cancel Reservation",
+          "elementType": "COMMAND"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Guest",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Cancel Reservation",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "0f9fff83-df49-4557-a13b-60ebdadff2e0",
+      "title": "Cancelling a standing reservation",
+      "chapter": "Table Reservations (backup - full workflow)",
+      "sliceName": "Cancel Reservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+          "title": "Reservation Made",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            },
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "9574f543-55c7-420e-99e9-6468c1216f9b",
+          "title": "Cancel Reservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "7b7f6cdc-73e1-42ec-ad36-fc1a12ea1e04",
+          "title": "Reservation Cancelled",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ]
+    },
+    {
+      "id": "834ae5c5-bbe1-48b1-b7c9-173aa0015da7",
+      "title": "Cannot cancel a reservation that does not exist",
+      "chapter": "Table Reservations (backup - full workflow)",
+      "sliceName": "Cancel Reservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [],
+      "when": [
+        {
+          "id": "9574f543-55c7-420e-99e9-6468c1216f9b",
+          "title": "Cancel Reservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "999"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "e0edd56b-a00e-4aa7-9c08-e6f660ed3dd4",
+          "title": "Cannot cancel a reservation that does not exist",
+          "description": "reservation not found",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "8eaed1fa-0c92-4cdb-a0a2-ca6c9b2b300f",
+      "title": "Cannot cancel the same reservation twice",
+      "chapter": "Table Reservations (backup - full workflow)",
+      "sliceName": "Cancel Reservation",
+      "vertical": false,
+      "expectEmptyList": false,
+      "examples": [],
+      "given": [
+        {
+          "id": "c0ba1d26-e673-436e-a97e-fb826ed0cda2",
+          "title": "Reservation Made",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            },
+            {
+              "name": "guestName",
+              "example": "Ida Berg"
+            },
+            {
+              "name": "email",
+              "example": "ida@example.com"
+            },
+            {
+              "name": "reservationDate",
+              "example": "14.03.2026"
+            },
+            {
+              "name": "timeSlot",
+              "example": "18:00"
+            },
+            {
+              "name": "partySize",
+              "example": "4"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "7b7f6cdc-73e1-42ec-ad36-fc1a12ea1e04",
+          "title": "Reservation Cancelled",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "when": [
+        {
+          "id": "9574f543-55c7-420e-99e9-6468c1216f9b",
+          "title": "Cancel Reservation",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "COMMAND",
+          "fields": [
+            {
+              "name": "reservationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        }
+      ],
+      "then": [
+        {
+          "id": "226b48da-9a49-4283-a680-b2106356782b",
+          "title": "Cannot cancel the same reservation twice",
+          "description": "reservation already cancelled",
+          "type": "SPEC_ERROR",
+          "fields": []
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": []
+}

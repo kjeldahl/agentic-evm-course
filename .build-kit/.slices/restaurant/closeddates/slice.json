@@ -1,0 +1,249 @@
+{
+  "id": "12cff132-6eb1-4017-8bc6-f626a975552e",
+  "title": "Closed Dates",
+  "status": "Created",
+  "sliceType": "STATE_VIEW",
+  "chapter": "Table Reservations (backup - full workflow)",
+  "context": "Restaurant",
+  "commands": [],
+  "events": [],
+  "readmodels": [
+    {
+      "id": "c6cd844f-ea64-4d7a-9f39-eeb50d97ff9a",
+      "title": "Closed Dates",
+      "type": "READMODEL",
+      "fields": [
+        {
+          "name": "vacationId",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": true,
+          "type": "UUID",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Vacation Registered.vacationId"
+        },
+        {
+          "name": "closedFrom",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Vacation Registered.first_day"
+        },
+        {
+          "name": "closedTo",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "Single",
+          "subfields": [],
+          "mapping": "Vacation Registered.last_day"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "7d465ac3-84b5-4421-9b06-8c2eb826c958",
+          "type": "INBOUND",
+          "title": "Vacation Registered",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "cb029f6a-de17-4ed8-9dc4-c8bce5e52435",
+          "type": "INBOUND",
+          "title": "Vacation Cancelled",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "92353989-3171-4fbd-ace0-6de7b4d42426",
+          "type": "OUTBOUND",
+          "title": "Book a Table",
+          "elementType": "HTML_SCREEN"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Interaction",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Closed Dates",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": true,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "screens": [
+    {
+      "id": "92353989-3171-4fbd-ace0-6de7b4d42426",
+      "title": "Book a Table",
+      "type": "HTML_SCREEN",
+      "fields": [
+        {
+          "name": "closedFrom",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "List",
+          "subfields": [],
+          "mapping": "Closed Dates.closedFrom"
+        },
+        {
+          "name": "closedTo",
+          "optional": false,
+          "showAttributes": false,
+          "technicalAttribute": false,
+          "query": false,
+          "generated": false,
+          "edited": false,
+          "idAttribute": false,
+          "type": "Date",
+          "cardinality": "List",
+          "subfields": [],
+          "mapping": "Closed Dates.closedTo"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "c6cd844f-ea64-4d7a-9f39-eeb50d97ff9a",
+          "type": "INBOUND",
+          "title": "Closed Dates",
+          "elementType": "READMODEL"
+        }
+      ],
+      "modelContext": "Restaurant",
+      "lane": "Guest",
+      "aggregate": "default",
+      "aggregateDependencies": [],
+      "triggers": [],
+      "tags": [],
+      "slice": "Closed Dates",
+      "description": "",
+      "context": "INTERNAL",
+      "elementContext": "INTERNAL",
+      "listElement": false,
+      "todoList": false,
+      "createsAggregate": false,
+      "elementCopy": false,
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "processors": [],
+  "tables": [],
+  "specifications": [],
+  "actors": [],
+  "aggregates": [],
+  "screenImages": [],
+  "comments": [],
+  "storylines": [
+    {
+      "id": "76936a12-b871-41ff-b538-430b2b553076",
+      "title": "A closure appears and is lifted again",
+      "elements": [
+        {
+          "id": "c6cd844f-ea64-4d7a-9f39-eeb50d97ff9a",
+          "title": "Closed Dates",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [],
+          "expectEmptyList": true
+        },
+        {
+          "id": "77cdf58a-87f5-40ca-b8bc-3459aca00aa0",
+          "title": "Vacation Registered",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "vacationId",
+              "example": "1"
+            },
+            {
+              "name": "name",
+              "example": "Winter"
+            },
+            {
+              "name": "first_day",
+              "example": "01.02.2026"
+            },
+            {
+              "name": "last_day",
+              "example": "08.02.2026"
+            },
+            {
+              "name": "notes",
+              "example": ""
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "c6cd844f-ea64-4d7a-9f39-eeb50d97ff9a",
+          "title": "Closed Dates",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [],
+          "expectEmptyList": false
+        },
+        {
+          "id": "ca172cbe-5273-427c-ae1d-5c4c3f775a54",
+          "title": "Vacation Cancelled",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "EVENT",
+          "fields": [
+            {
+              "name": "vacationId",
+              "example": "1"
+            }
+          ],
+          "expectEmptyList": false
+        },
+        {
+          "id": "c6cd844f-ea64-4d7a-9f39-eeb50d97ff9a",
+          "title": "Closed Dates",
+          "tags": [],
+          "index": 0,
+          "specRow": 0,
+          "type": "READMODEL",
+          "fields": [],
+          "expectEmptyList": true
+        }
+      ]
+    }
+  ]
+}
